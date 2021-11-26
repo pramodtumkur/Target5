@@ -10,15 +10,17 @@
           <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
             <%= check_box_tag("completed", true, todo.completed, { onclick: "this.form.submit();" }) %>
           <% end %>
-          <span class="<%= todo.completed ? "TodoItem__StrikedText" : "" %>">
-            <%= todo.todo_text %>
-          </span>
+         <p class= <%= todo.completed ? "Striked_Text" : "" %> >
+                        <%= todo.todo_text %>
+          </p>
+
           <% if show_due_date %>
             <p class="TodoItem-dueDate"><%= todo.due_date.to_s(:short) %></p>
           <% end %>
-          <a class="TodoItem-delete" href="javascript:void(0)"> <img src="delete.png" width=10px>
+
+          <a href="javascript:void(0)" class="TodoItemdelete" >
           <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
-            <%= image_submit_tag("delete.png", class: "TodoItem-delete") %>
+            <input type='image' src="delete.png" width=19px>
           <% end %>
           </a>
         </label>
@@ -26,3 +28,6 @@
     <% end %>
   </ul>
 </section>
+
+
+
